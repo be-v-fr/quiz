@@ -18,10 +18,7 @@
     filter: brightness(0.98);
 }
 
-.answerCorrect {
-    background: green;
-}
-
-.answerWrong {
-    background: red;
+.bg-success,
+.bg-danger {
+    color: white !important;
 }

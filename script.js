@@ -39,18 +39,18 @@ function renderQuestion() {
 
     for (let i = 1; i < 5; i++) {
         const answer = document.getElementById(`answer${i}`);
-        answer.classList.remove('answerCorrect');
-        answer.classList.remove('answerWrong');
+        answer.classList.remove('bg-success');
+        answer.classList.remove('bg-danger');
         answer.innerHTML = `${questions[currentQuestion][`answer${i}`]}`;
     }
 }
 
-function selectAnswer(answerIndex) {
-    const correctAnswer = questions[currentQuestion]['correctAnswer'];
-    const selectedAnswer = document.getElementById(`answer${answerIndex}`);
-    if (answerIndex == correctAnswer) {
-        selectedAnswer.classList.add('answerCorrect');
-    } else {
-        selectedAnswer.classList.add('answerWrong');
+function checkAnswer(selectedAnswerIndex) {
+    const selectedAnswer = document.getElementById(`answer${selectedAnswerIndex}`);
+    const correctAnswerIndex = questions[currentQuestion]['correctAnswer'];
+    const correctAnswer = document.getElementById(`answer${correctAnswerIndex}`);
+    if (selectedAnswerIndex != correctAnswerIndex) {
+        selectedAnswer.classList.add('bg-danger');
     }
+    correctAnswer.classList.add('bg-success');
 }
