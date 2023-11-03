@@ -1,0 +1,11 @@
+.main {
+    min-height: 100vh;
+    background: #FEFAEF !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quizCard {
+    width: 50rem;
+}
