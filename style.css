@@ -9,3 +9,19 @@
 .quizCard {
     width: 50rem;
 }
+
+.quizAnswerCard {
+    cursor: pointer;
+}
+
+.quizAnswerCard:hover {
+    filter: brightness(0.98);
+}
+
+.answerCorrect {
+    background: green;
+}
+
+.answerWrong {
+    background: red;
+}

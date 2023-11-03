@@ -27,16 +27,30 @@ let questions = [
     }
 ]
 
-function renderQuestion(questionNumber) {
-    const question = document.getElementById('question');
-    const answer1 = document.getElementById('answer1');
-    const answer2 = document.getElementById('answer2');
-    const answer3 = document.getElementById('answer3');
-    const answer4 = document.getElementById('answer4');
+let currentQuestion = 0;
 
-    question.innerHTML = `${questions[questionNumber]['question']}`;
-    answer1.innerHTML = `${questions[questionNumber]['answer1']}`;
-    answer2.innerHTML = `${questions[questionNumber]['answer2']}`;
-    answer3.innerHTML = `${questions[questionNumber]['answer3']}`;
-    answer4.innerHTML = `${questions[questionNumber]['answer4']}`; 
+function init() {
+    renderQuestion(0);
+}
+
+function renderQuestion() {
+    const question = document.getElementById('question');
+    question.innerHTML = `${questions[currentQuestion]['question']}`;
+
+    for (let i = 1; i < 5; i++) {
+        const answer = document.getElementById(`answer${i}`);
+        answer.classList.remove('answerCorrect');
+        answer.classList.remove('answerWrong');
+        answer.innerHTML = `${questions[currentQuestion][`answer${i}`]}`;
+    }
+}
+
+function selectAnswer(answerIndex) {
+    const correctAnswer = questions[currentQuestion]['correctAnswer'];
+    const selectedAnswer = document.getElementById(`answer${answerIndex}`);
+    if (answerIndex == correctAnswer) {
+        selectedAnswer.classList.add('answerCorrect');
+    } else {
+        selectedAnswer.classList.add('answerWrong');
+    }
 }
