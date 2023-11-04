@@ -6,7 +6,11 @@
     align-items: center;
 }
 
-.quizCard {
+.dNone {
+    display: none !important;
+}
+
+.contentCard {
     width: 50rem;
 }
 
@@ -21,4 +25,25 @@
 .bg-success,
 .bg-danger {
     color: white !important;
+}
+
+#resultsCard>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resultBrain {
+    width: 128px;
+}
+
+.resultLine {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    font-weight: bold;
+}
+
+.yourScore {
+    color: orange;
 }

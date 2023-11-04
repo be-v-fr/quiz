@@ -26,7 +26,7 @@
     </nav>
 
     <div class="main">
-        <div class="card quizCard">
+        <div class="card contentCard" id="quizCard">
             <img src="./img/question-mark.jpg" class="card-img-top" alt="Fragezeichen">
             <div class="card-body">
                 <h5 class="card-title" id="question"></h5>
@@ -43,7 +43,23 @@
                     <div class="card-body" id="answer4"></div>
                 </div>
 
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="quizCardFooter">
+                    <p>Frage <b><span id="currentQuestion"></span></b> von <b><span id="numberOfQuestions"></span></b>
+                    </p>
+                    <button onclick="nextQuestion()" id="nextQuestionBtn" class="btn btn-primary" disabled>Nächste
+                        Frage</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card contentCard dNone" id="resultsCard">
+            <div class="card-body">
+                <img src="./img/brain result.png" alt="Ergebnis" class="resultBrain">
+                HTML-Quiz beendet!
+                <div class="resultLine">
+                    <p class="yourScore">Deine Punktzahl</p>
+                    <p id="result"></p>
+                </div>
             </div>
         </div>
     </div>
