@@ -37,6 +37,14 @@ function init() {
     renderProgressBar();
     renderNumberOfQuestions();
     renderQuestion();
+    positionSelectedQuizLine(1);
+}
+
+function positionSelectedQuizLine(navIndex) {
+    for(i = 1; i < 4; i++) {
+        document.querySelector(`#nav :nth-child(${i})`).style = 'border-left: none';
+    }
+    document.querySelector(`#nav :nth-child(${navIndex})`).style = 'border-left: solid 4px';
 }
 
 function renderNumberOfQuestions() {

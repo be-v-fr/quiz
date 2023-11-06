@@ -1,3 +1,8 @@
+:root {
+    --anthraciteBlue: #27355C;
+    --navPadding: 32px;
+}
+
 .main {
     min-height: 100vh;
     background: #FEFAEF !important;
@@ -16,10 +21,43 @@
 
 .progress-bar {
     border-radius: 0 5px 5px 0;
+    background-color: var(--anthraciteBlue) !important;
 }
 
 .contentCard {
     width: 50rem;
+    flex-direction: row !important;
+}
+
+.card-header {
+    border-style: none !important;
+    background: var(--anthraciteBlue) !important;
+    background-image: url(/img/logo.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: calc(100% - 2*var(--navPadding)) !important;
+    background-position: var(--navPadding) calc(var(--navPadding)/2) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 0 !important;
+}
+
+.card-header:first-child {
+    border-radius: var(--bs-card-inner-border-radius) 0 0 var(--bs-card-inner-border-radius) !important;
+}
+
+nav>a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    padding-left: var(--navPadding);
+    padding-right: calc(var(--navPadding)*3/2);
+}
+
+nav>a:hover {
+    color: #F4F4F4;
 }
 
 .quizAnswerCard {
