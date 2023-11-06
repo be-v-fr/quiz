@@ -34,23 +34,13 @@
         Browser unterstützt ein Audio-Element nicht.
     </audio>
 
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">QuizApp</a>
-        </div>
-    </nav>
+    <div class="progress" role="progressbar" style="height: 10px">
+        <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+    </div>
 
     <div class="main">
         <div class="card contentCard" id="quizCard">
-            <img src="./img/question-mark.jpg" class="card-img-top" alt="Fragezeichen">
-            <div class="progress" role="progressbar" aria-label="Example 20px high" aria-valuenow="25" aria-valuemin="0"
-                aria-valuemax="100" style="height: 20px">
-                <div id="progressBar" class="progress-bar" style="width: 0%"></div>
-            </div>
             <div class="card-body">
-
-
-
                 <h5 class="card-title" id="question"></h5>
                 <div class="card quizAnswerCard mb-2" onclick="checkAnswer(1)">
                     <div class="card-body" id="answer1"></div>

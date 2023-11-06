@@ -34,6 +34,7 @@ function init() {
     currentQuestion = 0;
     correctAnswers = 0;
 
+    renderProgressBar();
     renderNumberOfQuestions();
     renderQuestion();
 }
@@ -49,7 +50,6 @@ function renderQuestion() {
 
     disableNextQuestionBtn(true);
     renderCurrentQuestionNumber();
-    renderProgressBar();
     renderAnswers();
 }
 
@@ -111,12 +111,13 @@ function checkAnswer(selectedAnswerIndex) {
     disableNextQuestionBtn(false);
 }
 
-function wrongAnswer(selectedAnswer, correctAnswer) {
-    return selectedAnswer != correctAnswer;
+function wrongAnswer(selected, correct) {
+    return selected != correct;
 }
 
 function nextQuestion() {
     currentQuestion++;
+    renderProgressBar();
     if (quizNotOver()) {
         renderQuestion();
     } else {
