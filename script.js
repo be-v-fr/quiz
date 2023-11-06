@@ -61,7 +61,7 @@ function renderProgressBar() {
     const progressBar = document.getElementById('progressBar');
     const widthPercent = currentQuestion / questions.length * 100;
 
-    progressBar.style = `width: ${widthPercent}%`;
+    progressBar.style.width = `${widthPercent}%`;
 }
 
 function renderResults() {
@@ -100,6 +100,19 @@ function nextQuestion() {
     } else {
         renderResults();
     }
+}
+
+function restartGame() {
+    const quizCard = document.getElementById('quizCard');
+    const resultsCard = document.getElementById('resultsCard');
+
+    currentQuestion = 0;
+    correctAnswers = 0;
+
+    quizCard.classList.remove('dNone');
+    resultsCard.classList.add('dNone');
+
+    renderQuestion();
 }
 
 function resultHTML() {
