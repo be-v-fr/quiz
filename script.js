@@ -31,6 +31,9 @@ let currentQuestion = 0;
 let correctAnswers = 0;
 
 function init() {
+    currentQuestion = 0;
+    correctAnswers = 0;
+
     renderNumberOfQuestions();
     renderQuestion();
 }
@@ -41,20 +44,18 @@ function renderNumberOfQuestions() {
 }
 
 function renderQuestion() {
-    const currentQuestionNumber = document.getElementById('currentQuestion');
     const question = document.getElementById('question');
-
-    currentQuestionNumber.innerHTML = currentQuestion + 1;
     question.innerHTML = `${questions[currentQuestion]['question']}`;
 
+    disableNextQuestionBtn(true);
+    renderCurrentQuestionNumber();
     renderProgressBar();
+    renderAnswers();
+}
 
-    for (let i = 1; i < 5; i++) { // Schleife wird für jede Antwort durchlaufen
-        const answer = document.getElementById(`answer${i}`);
-        answer.classList.remove('bg-success');
-        answer.classList.remove('bg-danger');
-        answer.innerHTML = `${questions[currentQuestion][`answer${i}`]}`;
-    }
+function renderCurrentQuestionNumber() {
+    const currentQuestionNumber = document.getElementById('currentQuestion');
+    currentQuestionNumber.innerHTML = currentQuestion + 1;
 }
 
 function renderProgressBar() {
@@ -62,6 +63,19 @@ function renderProgressBar() {
     const widthPercent = currentQuestion / questions.length * 100;
 
     progressBar.style.width = `${widthPercent}%`;
+}
+
+function renderAnswers() {
+    for (let i = 1; i < 5; i++) { // Schleife wird für jede Antwort durchlaufen
+        renderAnswer(i);
+    }
+}
+
+function renderAnswer(answerIndex) {
+    const answer = document.getElementById(`answer${answerIndex}`);
+    answer.classList.remove('bg-success');
+    answer.classList.remove('bg-danger');
+    answer.innerHTML = `${questions[currentQuestion][`answer${answerIndex}`]}`;
 }
 
 function renderResults() {
@@ -76,13 +90,17 @@ function renderResults() {
     result.innerHTML = resultHTML();
 }
 
+function disableNextQuestionBtn(disabled) {
+    const btn = document.getElementById('nextQuestionBtn');
+    btn.disabled = disabled;
+}
+
 function checkAnswer(selectedAnswerIndex) {
     const selectedAnswer = document.getElementById(`answer${selectedAnswerIndex}`);
     const correctAnswerIndex = questions[currentQuestion]['correctAnswer'];
     const correctAnswer = document.getElementById(`answer${correctAnswerIndex}`);
-    const btn = document.getElementById('nextQuestionBtn');
 
-    if (selectedAnswerIndex != correctAnswerIndex) {
+    if (wrongAnswer(selectedAnswerIndex, correctAnswerIndex)) {
         selectedAnswer.classList.add('bg-danger');
         playAudio('wrongAnswerAudio');
     } else {
@@ -90,29 +108,31 @@ function checkAnswer(selectedAnswerIndex) {
         playAudio('correctAnswerAudio');
     }
     correctAnswer.classList.add('bg-success');
-    btn.disabled = false;
+    disableNextQuestionBtn(false);
+}
+
+function wrongAnswer(selectedAnswer, correctAnswer) {
+    return selectedAnswer != correctAnswer;
 }
 
 function nextQuestion() {
-    const btn = document.getElementById('nextQuestionBtn');
-
     currentQuestion++;
-    if (currentQuestion < questions.length) {
-        btn.disabled = true;
+    if (quizNotOver()) {
         renderQuestion();
     } else {
         renderResults();
     }
 }
 
+function quizNotOver() {
+    return currentQuestion < questions.length;
+}
+
 function restartGame() {
     const quizCard = document.getElementById('quizCard');
     const resultsCard = document.getElementById('resultsCard');
 
-    currentQuestion = 0;
-    correctAnswers = 0;
-
-    renderQuestion();
+    init();
 
     quizCard.classList.remove('dNone');
     resultsCard.classList.add('dNone');
