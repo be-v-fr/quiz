@@ -72,6 +72,7 @@ function renderResults() {
     quizCard.classList.add('dNone');
     resultsCard.classList.remove('dNone');
 
+    playAudio('endscreenAudio');
     result.innerHTML = resultHTML();
 }
 
@@ -83,8 +84,10 @@ function checkAnswer(selectedAnswerIndex) {
 
     if (selectedAnswerIndex != correctAnswerIndex) {
         selectedAnswer.classList.add('bg-danger');
+        playAudio('wrongAnswerAudio');
     } else {
         correctAnswers++;
+        playAudio('correctAnswerAudio');
     }
     correctAnswer.classList.add('bg-success');
     btn.disabled = false;
@@ -109,10 +112,15 @@ function restartGame() {
     currentQuestion = 0;
     correctAnswers = 0;
 
+    renderQuestion();
+
     quizCard.classList.remove('dNone');
     resultsCard.classList.add('dNone');
+}
 
-    renderQuestion();
+function playAudio(id) {
+    const audioElement = document.getElementById(`${id}`);
+    audioElement.play();
 }
 
 function resultHTML() {
