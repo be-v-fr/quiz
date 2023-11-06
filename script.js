@@ -18,7 +18,7 @@ let questions = [
     },
 
     {
-        question: 'Wie bindet man eine Website in eine Webite ein?',
+        question: 'Wie bindet man eine Website in eine Website ein?',
         answer1: 'Home Tool Markup Language',
         answer2: 'Hyperlinks and Text Markup Language',
         answer3: 'Hyper Text Marker Language',
@@ -81,9 +81,10 @@ function renderAnswers() {
 
 function renderAnswer(answerIndex) {
     const answer = document.getElementById(`answer${answerIndex}`);
+    const answerContent = document.getElementById(`answer${answerIndex}Content`);
     answer.classList.remove('bg-success');
     answer.classList.remove('bg-danger');
-    answer.innerHTML = `${questions[currentQuestion][`answer${answerIndex}`]}`;
+    answerContent.innerHTML = `${questions[currentQuestion][`answer${answerIndex}`]}`;
 }
 
 function renderResults() {

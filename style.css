@@ -24,9 +24,17 @@
     background-color: var(--anthraciteBlue) !important;
 }
 
+.card {
+    border-style: none !important;
+}
+
 .contentCard {
     width: 50rem;
     flex-direction: row !important;
+}
+
+.contentCard>.card-body {
+    background: #F7F7F7;
 }
 
 .card-header {
@@ -62,15 +70,46 @@ nav>a:hover {
 
 .quizAnswerCard {
     cursor: pointer;
+    border-radius: 0 !important;
 }
 
 .quizAnswerCard:hover {
-    filter: brightness(0.98);
+    filter: brightness(0.99);
+}
+
+.quizAnswerCard>.card-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+.answerLetter {
+    font-weight: bold;
+    color: black;
+    width: 2em;
+    height: 2em;
+    background: #D4D4D4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .bg-success,
 .bg-danger {
     color: white !important;
+}
+
+.quizCardFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quizCardCounter {
+    background: red !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
 }
 
 #resultsCard>div {

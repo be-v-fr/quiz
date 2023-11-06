@@ -37,29 +37,41 @@
     <div class="progress" role="progressbar" style="height: 10px">
         <div id="progressBar" class="progress-bar" style="width: 0%"></div>
     </div>
-    
+
 
     <div class="main">
         <div class="card contentCard" id="quizCard">
             <nav id="nav" class="card-header">
                 <a href="">HTML</a>
                 <a href="">CSS</a>
-                <a href="">JS</a>    
+                <a href="">JS</a>
             </nav>
 
             <div class="card-body">
                 <h5 class="card-title" id="question"></h5>
                 <div class="card quizAnswerCard mb-2" onclick="checkAnswer(1)">
-                    <div class="card-body" id="answer1"></div>
+                    <div class="card-body" id="answer1">
+                        <div class="answerLetter">A</div>
+                        <span id="answer1Content"></span>
+                    </div>
                 </div>
                 <div class="card quizAnswerCard mb-2" onclick="checkAnswer(2)">
-                    <div class="card-body" id="answer2"></div>
+                    <div class="card-body" id="answer2">
+                        <div class="answerLetter">B</div>
+                        <span id="answer2Content"></span>
+                    </div>
                 </div>
                 <div class="card quizAnswerCard mb-2" onclick="checkAnswer(3)">
-                    <div class="card-body" id="answer3"></div>
+                    <div class="card-body" id="answer3">
+                        <div class="answerLetter">C</div>
+                        <span id="answer3Content"></span>
+                    </div>
                 </div>
                 <div class="card quizAnswerCard mb-2" onclick="checkAnswer(4)">
-                    <div class="card-body" id="answer4"></div>
+                    <div class="card-body" id="answer4">
+                        <div class="answerLetter">D</div>
+                        <span id="answer4Content"></span>
+                    </div>
                 </div>
 
                 <div class="quizCardFooter">
@@ -81,8 +93,9 @@
             </div>
 
             <div class="quizCardFooter">
-                <p>Frage <b id="currentQuestion"></b> von <b id="numberOfQuestions"></b>
-                </p>
+                <span>
+                    Frage <b id="currentQuestion"></b> von <b id="numberOfQuestions"></b>
+                </span>
                 <button onclick="restartGame()" class="btn btn-primary">Spiel wiederholen</button>
             </div>
 
