@@ -28,7 +28,13 @@
     <div class="main">
         <div class="card contentCard" id="quizCard">
             <img src="./img/question-mark.jpg" class="card-img-top" alt="Fragezeichen">
+            <div class="progress" role="progressbar" aria-label="Example 20px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
+                <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+              </div>
             <div class="card-body">
+
+
+
                 <h5 class="card-title" id="question"></h5>
                 <div class="card quizAnswerCard mb-2" onclick="checkAnswer(1)">
                     <div class="card-body" id="answer1"></div>
@@ -44,7 +50,7 @@
                 </div>
 
                 <div class="quizCardFooter">
-                    <p>Frage <b><span id="currentQuestion"></span></b> von <b><span id="numberOfQuestions"></span></b>
+                    <p>Frage <b id="currentQuestion"></b> von <b id="numberOfQuestions"></b>
                     </p>
                     <button onclick="nextQuestion()" id="nextQuestionBtn" class="btn btn-primary" disabled>Nächste
                         Frage</button>
@@ -61,6 +67,7 @@
                     <p id="result"></p>
                 </div>
             </div>
+            <img class="trophy" src="./img/trophy.png" alt="Pokal">
         </div>
     </div>
 

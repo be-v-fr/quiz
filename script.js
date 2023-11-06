@@ -32,7 +32,7 @@ let correctAnswers = 0;
 
 function init() {
     renderNumberOfQuestions();
-    showQuestion();
+    renderQuestion();
 }
 
 function renderNumberOfQuestions() {
@@ -40,12 +40,14 @@ function renderNumberOfQuestions() {
     numberOfQuestions.innerHTML = questions.length;
 }
 
-function showQuestion() {
+function renderQuestion() {
     const currentQuestionNumber = document.getElementById('currentQuestion');
     const question = document.getElementById('question');
 
     currentQuestionNumber.innerHTML = currentQuestion + 1;
     question.innerHTML = `${questions[currentQuestion]['question']}`;
+
+    renderProgressBar();
 
     for (let i = 1; i < 5; i++) { // Schleife wird für jede Antwort durchlaufen
         const answer = document.getElementById(`answer${i}`);
@@ -55,7 +57,14 @@ function showQuestion() {
     }
 }
 
-function showResults() {
+function renderProgressBar() {
+    const progressBar = document.getElementById('progressBar');
+    const widthPercent = currentQuestion / questions.length * 100;
+
+    progressBar.style = `width: ${widthPercent}%`;
+}
+
+function renderResults() {
     const quizCard = document.getElementById('quizCard');
     const resultsCard = document.getElementById('resultsCard');
     const result = document.getElementById('result');
@@ -87,9 +96,9 @@ function nextQuestion() {
     currentQuestion++;
     if (currentQuestion < questions.length) {
         btn.disabled = true;
-        showQuestion();
+        renderQuestion();
     } else {
-        showResults();
+        renderResults();
     }
 }
 
