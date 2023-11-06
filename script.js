@@ -40,11 +40,8 @@ function init() {
     positionSelectedQuizLine(1);
 }
 
-function positionSelectedQuizLine(navIndex) {
-    for(i = 1; i < 4; i++) {
-        document.querySelector(`#nav :nth-child(${i})`).style = 'border-left: none';
-    }
-    document.querySelector(`#nav :nth-child(${navIndex})`).style = 'border-left: solid 4px';
+function renderStartscreen() {
+
 }
 
 function renderNumberOfQuestions() {
@@ -87,6 +84,13 @@ function renderAnswer(answerIndex) {
     answerContent.innerHTML = `${questions[currentQuestion][`answer${answerIndex}`]}`;
 }
 
+function positionSelectedQuizLine(navIndex) {
+    for (i = 1; i < 4; i++) {
+        document.querySelector(`#nav :nth-child(${i})`).style = 'border-color: rgba(0,0,0,0)';
+    }
+    document.querySelector(`#nav :nth-child(${navIndex})`).style = 'border-color: white';
+}
+
 function renderResults() {
     const quizCard = document.getElementById('quizCard');
     const resultsCard = document.getElementById('resultsCard');
@@ -95,8 +99,8 @@ function renderResults() {
     quizCard.classList.add('dNone');
     resultsCard.classList.remove('dNone');
 
-    playAudio('endscreenAudio');
     result.innerHTML = resultHTML();
+    playAudio('endscreenAudio');
 }
 
 function disableNextQuestionBtn(disabled) {
@@ -138,7 +142,7 @@ function quizNotOver() {
     return currentQuestion < questions.length;
 }
 
-function restartGame() {
+function newGame() {
     const quizCard = document.getElementById('quizCard');
     const resultsCard = document.getElementById('resultsCard');
 

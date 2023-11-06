@@ -40,14 +40,14 @@
 
 
     <div class="main">
-        <div class="card contentCard" id="quizCard">
+        <div class="card contentCard">
             <nav id="nav" class="card-header">
                 <a href="">HTML</a>
                 <a href="">CSS</a>
                 <a href="">JS</a>
             </nav>
 
-            <div class="card-body">
+            <div class="card-body" id="quizCard">
                 <h5 class="card-title" id="question"></h5>
                 <div class="card quizAnswerCard mb-2" onclick="checkAnswer(1)">
                     <div class="card-body" id="answer1">
@@ -75,31 +75,26 @@
                 </div>
 
                 <div class="quizCardFooter">
-                    <p>Frage <b id="currentQuestion"></b> von <b id="numberOfQuestions"></b></p>
+                    <p class="counter">Frage <b id="currentQuestion"></b> von <b id="numberOfQuestions"></b></p>
                     <button onclick="nextQuestion()" id="nextQuestionBtn" class="btn btn-primary" disabled>Nächste
                         Frage</button>
                 </div>
             </div>
-        </div>
 
-        <div class="card contentCard dNone" id="resultsCard">
-            <div class="card-body">
+            <div class="card-body dNone" id="resultsCard">
                 <img src="./img/brain result.png" alt="Ergebnis" class="resultBrain">
                 HTML-Quiz beendet!
                 <div class="resultLine">
                     <p class="yourScore">Deine Punktzahl</p>
                     <p id="result"></p>
                 </div>
-            </div>
 
-            <div class="quizCardFooter">
-                <span>
-                    Frage <b id="currentQuestion"></b> von <b id="numberOfQuestions"></b>
-                </span>
-                <button onclick="restartGame()" class="btn btn-primary">Spiel wiederholen</button>
-            </div>
+                <div class="quizCardFooter">
+                    <button onclick="newGame()" class="btn btn-primary">Neues Spiel</button>
+                </div>
 
-            <img class="trophy" src="./img/trophy.png" alt="Pokal">
+                <img id="trophy" src="./img/trophy.png" alt="Pokal">
+            </div>
         </div>
     </div>
 
