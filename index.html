@@ -42,12 +42,31 @@
     <div class="main">
         <div class="card contentCard">
             <nav id="nav" class="card-header">
-                <a href="">HTML</a>
-                <a href="">CSS</a>
-                <a href="">JS</a>
+                <a href="#" onclick="navSelectQuiz(1)">HTML</a>
+                <a href="#" onclick="navSelectQuiz(2)">CSS</a>
+                <a href="#" onclick="navSelectQuiz(3)">JS</a>
             </nav>
 
-            <div class="card-body" id="quizCard">
+            <div id="dialogueWrapper" class="dialogueBg dNone" onclick="hideDialogue()">
+                <div class="dialogue">
+                    <p id="dialogueMessage"></p>
+                </div>
+            </div>
+
+            <div class="card-body" id="screen1">
+                <p><b>Willkommen zum WebDev-Quiz!</b><br>
+                    Bist du bereit?</p>
+                <button onclick="showSelectQuizMenu()" class="btn btn-primary">Thema wählen</button>
+            </div>
+
+            <div class="card-body dNone" id="screen2">
+                <p><b>Wähle dein Lieblingsthema!</b><br></p>
+                <button onclick="startQuiz(1)" class="btn btn-primary">HTML</button>
+                <button onclick="startQuiz(2)" class="btn btn-primary">CSS</button>
+                <button onclick="startQuiz(3)" class="btn btn-primary">Javascript</button>
+            </div>
+
+            <div class="card-body dNone" id="screen3">
                 <h5 class="card-title" id="question"></h5>
                 <div class="card quizAnswerCard mb-2" onclick="checkAnswer(1)">
                     <div class="card-body" id="answer1">
@@ -81,7 +100,7 @@
                 </div>
             </div>
 
-            <div class="card-body dNone" id="resultsCard">
+            <div class="card-body dNone" id="screen4">
                 <img src="./img/brain result.png" alt="Ergebnis" class="resultBrain">
                 HTML-Quiz beendet!
                 <div class="resultLine">
@@ -90,7 +109,7 @@
                 </div>
 
                 <div class="quizCardFooter">
-                    <button onclick="newGame()" class="btn btn-primary">Neues Spiel</button>
+                    <button onclick="showSelectQuizMenu()" class="btn btn-primary">Neues Spiel</button>
                 </div>
 
                 <img id="trophy" src="./img/trophy.png" alt="Pokal">

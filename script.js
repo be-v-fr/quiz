@@ -1,4 +1,4 @@
-let questions = [
+let questionsHTML = [
     {
         question: 'Wofür steht HTML?',
         answer1: 'Home Tool Markup Language',
@@ -27,21 +27,62 @@ let questions = [
     }
 ]
 
+let questions = [];
 let currentQuestion = 0;
 let correctAnswers = 0;
+let disabledAnswers = false; // dient zur Kontrolle, ob Frage bereits beantwortet wurde
 
 function init() {
-    currentQuestion = 0;
-    correctAnswers = 0;
-
     renderProgressBar();
-    renderNumberOfQuestions();
-    renderQuestion();
-    positionSelectedQuizLine(1);
 }
 
-function renderStartscreen() {
+function showScreen(idNumber) {
+    for (i = 1; i < 5; i++) {
+        const screen = document.getElementById(`screen${i}`);
+        if (i == idNumber) { // anzeigen
+            screen.classList.remove('dNone');
+        } else { // verbergen
+            screen.classList.add('dNone');
+        }
+    }
+}
 
+function showSelectQuizMenu() {
+    reset();
+    showScreen(2);
+}
+
+function reset() {
+    currentQuestion = 0;
+    correctAnswers = 0;
+    disabledAnswers = false;
+    positionSelectedQuizLine(0); // Entfernung der Nav-Markierungen
+    renderProgressBar();
+}
+
+function startQuiz(quizIndex) {
+    reset()
+    showScreen(3);
+    positionSelectedQuizLine(quizIndex);
+    setQuestionsArray(quizIndex);
+    renderNumberOfQuestions();
+    renderQuestion();
+}
+
+function navSelectQuiz(quizIndex) { // Bedingung für Aktivität hinzufügen
+    if (currentQuestion > 0) {
+        showDialogue(leaveQuizHTML());
+    } else {
+        startQuiz(quizIndex);
+    }
+}
+
+function showDialogue(message) {
+    document.getElementById('dialogueWrapper').classList.remove('dNone');
+    document.getElementById('dialogueMessage').innerHTML = `${message}`;
+}
+function hideDialogue() {
+    document.getElementById('dialogueWrapper').classList.add('dNone');
 }
 
 function renderNumberOfQuestions() {
@@ -66,7 +107,6 @@ function renderCurrentQuestionNumber() {
 function renderProgressBar() {
     const progressBar = document.getElementById('progressBar');
     const widthPercent = currentQuestion / questions.length * 100;
-
     progressBar.style.width = `${widthPercent}%`;
 }
 
@@ -88,24 +128,21 @@ function positionSelectedQuizLine(navIndex) {
     for (i = 1; i < 4; i++) {
         document.querySelector(`#nav :nth-child(${i})`).style = 'border-color: rgba(0,0,0,0)';
     }
-    document.querySelector(`#nav :nth-child(${navIndex})`).style = 'border-color: white';
+    if (navIndex != 0) { // für den Wert 0 werden die Markierungen nur entfernt
+        document.querySelector(`#nav :nth-child(${navIndex})`).style = 'border-color: white';
+    }
 }
 
-function renderResults() {
-    const quizCard = document.getElementById('quizCard');
-    const resultsCard = document.getElementById('resultsCard');
-    const result = document.getElementById('result');
-
-    quizCard.classList.add('dNone');
-    resultsCard.classList.remove('dNone');
-
-    result.innerHTML = resultHTML();
-    playAudio('endscreenAudio');
-}
-
-function disableNextQuestionBtn(disabled) {
-    const btn = document.getElementById('nextQuestionBtn');
-    btn.disabled = disabled;
+function setQuestionsArray(quizIndex) {
+    if (quizIndex == 1) {
+        questions = questionsHTML;
+    }
+    if (quizIndex == 2) {
+        questions = questionsCSS;
+    }
+    if (quizIndex == 3) {
+        questions = questionsJS;
+    }
 }
 
 function checkAnswer(selectedAnswerIndex) {
@@ -113,23 +150,54 @@ function checkAnswer(selectedAnswerIndex) {
     const correctAnswerIndex = questions[currentQuestion]['correctAnswer'];
     const correctAnswer = document.getElementById(`answer${correctAnswerIndex}`);
 
-    if (wrongAnswer(selectedAnswerIndex, correctAnswerIndex)) {
-        selectedAnswer.classList.add('bg-danger');
+    if (!disabledAnswers) {
+        if (!wrongAnswer(selectedAnswerIndex, correctAnswerIndex)) {
+            correctAnswers++;
+        }
+        answerColorAndSound(selectedAnswerIndex, selectedAnswer, correctAnswerIndex, correctAnswer);
+        disableNextQuestionBtn(false);
+        disableAnswers(true);
+    }
+}
+
+function answerColorAndSound(selectedIndex, selected, correctIndex, correct) {
+    if (wrongAnswer(selectedIndex, correctIndex)) {
+        selected.classList.add('bg-danger');
         playAudio('wrongAnswerAudio');
     } else {
-        correctAnswers++;
         playAudio('correctAnswerAudio');
     }
-    correctAnswer.classList.add('bg-success');
-    disableNextQuestionBtn(false);
+    correct.classList.add('bg-success');
 }
 
 function wrongAnswer(selected, correct) {
     return selected != correct;
 }
 
+function disableNextQuestionBtn(disabled) {
+    const btn = document.getElementById('nextQuestionBtn');
+    btn.disabled = disabled;
+}
+
+function disableAnswers(disable) {
+    disabledAnswers = disable; // globale Variable setzen
+    for (let i = 1; i < 5; i++) { // Schleife wird für jede Antwort durchlaufen
+        disableAnswer(i);
+    }
+}
+
+function disableAnswer(answerIndex) {
+    const answer = document.getElementById(`answer${answerIndex}`);
+    if (disabledAnswers) {
+        answer.classList.add('quizAnswerCardDisabled');
+    } else {
+        answer.classList.remove('quizAnswerCardDisabled');
+    }
+}
+
 function nextQuestion() {
     currentQuestion++;
+    disableAnswers(false);
     renderProgressBar();
     if (quizNotOver()) {
         renderQuestion();
@@ -142,23 +210,28 @@ function quizNotOver() {
     return currentQuestion < questions.length;
 }
 
-function newGame() {
-    const quizCard = document.getElementById('quizCard');
-    const resultsCard = document.getElementById('resultsCard');
-
-    init();
-
-    quizCard.classList.remove('dNone');
-    resultsCard.classList.add('dNone');
-}
-
 function playAudio(id) {
     const audioElement = document.getElementById(`${id}`);
     audioElement.play();
 }
 
+function renderResults() {
+    const result = document.getElementById('result');
+    showScreen(4);
+    result.innerHTML = resultHTML();
+    playAudio('endscreenAudio');
+}
+
 function resultHTML() {
     return /* html */ `
         ${correctAnswers} / ${questions.length}
+    `;
+}
+
+function leaveQuizHTML(quizIndex) {
+    return /* html */ `
+        Willst du wirklich das aktuelle Quiz verlassen?<br>
+        <button onclick="startQuiz(${quizIndex})" class="btn btn-primary">ja</button>
+        <button onclick="hideDialogue()" class="btn btn-primary">nein</button>
     `;
 }

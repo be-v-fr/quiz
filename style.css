@@ -30,6 +30,7 @@
 
 .contentCard {
     width: 50rem;
+    height: 25rem !important;
     flex-direction: row !important;
 }
 
@@ -63,10 +64,46 @@ nav>a {
     padding-left: calc(var(--navPadding) - 4px);
     padding-right: calc(var(--navPadding)*3/2);
     border-left: solid 4px;
+    border-color: rgba(0,0,0,0);
 }
 
 nav>a:hover {
     color: #F4F4F4;
+}
+
+.dialogueBg {
+    background-color: rgba(0,0,0,0.2);
+    z-index: 999;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialogue {
+    height: 50vh;
+    width: 50vw;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 24px;
+}
+
+#screen1,
+#screen2 {
+    background: url(./img/brainbg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .quizAnswerCard {
@@ -76,6 +113,10 @@ nav>a:hover {
 
 .quizAnswerCard:hover {
     filter: brightness(0.99);
+}
+
+.quizAnswerCardDisabled {
+    cursor: default !important;
 }
 
 .quizAnswerCard>.card-body {
@@ -112,7 +153,7 @@ nav>a:hover {
     margin-bottom: auto;
 }
 
-#resultsCard>div {
+#screen4>div {
     display: flex;
     flex-direction: column;
     align-items: center;
