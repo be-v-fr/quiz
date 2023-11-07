@@ -1,32 +1,3 @@
-let questionsHTML = [
-    {
-        question: 'Wofür steht HTML?',
-        answer1: 'Home Tool Markup Language',
-        answer2: 'Hyperlinks and Text Markup Language',
-        answer3: 'Hyper Text Marker Language',
-        answer4: 'Hyper Text Markup Language',
-        correctAnswer: 4
-    },
-
-    {
-        question: 'Wer hat HTML erfunden?',
-        answer1: 'Home Tool Markup Language',
-        answer2: 'Hyperlinks and Text Markup Language',
-        answer3: 'Hyper Text Marker Language',
-        answer4: 'Hyper Text Markup Language',
-        correctAnswer: 4
-    },
-
-    {
-        question: 'Wie bindet man eine Website in eine Website ein?',
-        answer1: 'Home Tool Markup Language',
-        answer2: 'Hyperlinks and Text Markup Language',
-        answer3: 'Hyper Text Marker Language',
-        answer4: 'Hyper Text Markup Language',
-        correctAnswer: 4
-    }
-]
-
 let questions = [];
 let currentQuestion = 0;
 let correctAnswers = 0;
@@ -230,8 +201,10 @@ function resultHTML() {
 
 function leaveQuizHTML(quizIndex) {
     return /* html */ `
-        Willst du wirklich das aktuelle Quiz verlassen?<br>
-        <button onclick="startQuiz(${quizIndex})" class="btn btn-primary">ja</button>
-        <button onclick="hideDialogue()" class="btn btn-primary">nein</button>
+        Willst du wirklich das aktuelle Quiz verlassen?
+        <div class="dialogueBtnContainer">
+            <button onclick="startQuiz(${quizIndex})" class="btn btn-primary">ja</button>
+            <button onclick="hideDialogue()" class="btn btn-primary">nein</button>
+        </div>
     `;
 }

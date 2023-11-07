@@ -86,12 +86,23 @@ nav>a:hover {
 }
 
 .dialogue {
-    height: 50vh;
-    width: 50vw;
+    padding-top: 8px;
+    height: 140px;
+    width: 400px;
     background-color: white;
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    padding: 24px;
+    border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialogueBtnContainer {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
 }
 
 #screen1,
@@ -105,6 +116,10 @@ nav>a:hover {
     justify-content: center;
     align-items: center;
     gap: 10px;
+}
+
+#screen2>button {
+    width: 105px;
 }
 
 h2 {
