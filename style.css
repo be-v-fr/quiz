@@ -4,6 +4,7 @@
 }
 
 .main {
+    font-family: 'Rubik';
     min-height: 100vh;
     background: #FEFAEF !important;
     display: flex;
