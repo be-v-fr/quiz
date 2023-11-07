@@ -107,6 +107,17 @@ nav>a:hover {
     gap: 10px;
 }
 
+h2 {
+    font-family: 'PT Sans';
+    font-weight: bold;
+}
+
+.cardBodyText {
+    font-family: 'PT Sans';
+    font-weight: normal;
+    font-size: 22px !important;
+}
+
 .quizAnswerCard {
     cursor: pointer;
     border-radius: 0 !important;
