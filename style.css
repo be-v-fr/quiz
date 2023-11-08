@@ -1,11 +1,12 @@
 :root {
     --anthraciteBlue: #27355C;
     --navPadding: 32px;
+    --progressBarHeight: 10px;
 }
 
 .main {
     font-family: 'Rubik';
-    min-height: 100vh;
+    min-height: calc(100vh - var(--progressBarHeight));
     background: #FEFAEF !important;
     display: flex;
     justify-content: center;
@@ -14,6 +15,10 @@
 
 .dNone {
     display: none !important;
+}
+
+.shadow {
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
 }
 
 .progress {
@@ -105,6 +110,10 @@ nav>a:hover {
     gap: 4px;
 }
 
+.card-body {
+    border-radius: var(--bs-card-border-radius);
+}
+
 #screen1,
 #screen2 {
     background: url(./img/brainbg.jpg);
@@ -173,6 +182,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: calc(var(--bs-card-spacer-y)/2);
 }
 
 .counter {
@@ -180,14 +190,17 @@ h2 {
     margin-bottom: auto;
 }
 
-#screen4>div {
+#screen4 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 4px;
 }
 
 .resultBrain {
     width: 128px;
+    margin-bottom: 16px;
 }
 
 .resultLine {

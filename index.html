@@ -37,14 +37,13 @@
         Browser unterstützt ein Audio-Element nicht.
     </audio>
 
-    <div class="progress" role="progressbar" style="height: 10px">
+    <div class="progress" role="progressbar" style="height: var(--progressBarHeight)">
         <div id="progressBar" class="progress-bar" style="width: 0%"></div>
-    </div>
-
+    </div>    
 
     <div class="main">
-        <div class="card contentCard">
-            <nav id="nav" class="card-header">
+        <div class="card contentCard shadow">
+            <nav id="nav" class="card-header shadow">
                 <a href="#" onclick="navSelectQuiz(1)">HTML</a>
                 <a href="#" onclick="navSelectQuiz(2)">CSS</a>
                 <a href="#" onclick="navSelectQuiz(3)">JS</a>
