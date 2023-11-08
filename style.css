@@ -47,7 +47,7 @@
 .card-header {
     border-style: none !important;
     background: var(--anthraciteBlue) !important;
-    background-image: url(/img/logo.png) !important;
+    background-image: url(../quiz/img/logo.png) !important;
     background-repeat: no-repeat !important;
     background-size: calc(100% - 2*var(--navPadding)) !important;
     background-position: var(--navPadding) calc(var(--navPadding)/2) !important;
@@ -125,7 +125,7 @@ nav>a:hover {
 
 #screen1,
 #screen2 {
-    background: url(./img/brainbg.jpg);
+    background: url(../quiz/img/brainbg.jpg);
     background-position: center;
     background-repeat: no-repeat;
     text-align: center;

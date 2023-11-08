@@ -34,7 +34,7 @@ function reset() {
 }
 
 function startQuiz(quizIndex) {
-    reset()
+    reset();
     showScreen(3);
     positionSelectedQuizLine(quizIndex);
     setQuestionsArray(quizIndex);
@@ -57,7 +57,7 @@ function activateNav(activated) {
 function navSelectQuiz(quizIndex) {
     if (!disabledNav) {
         if (currentQuestion > 0) { // Bestätigung per Dialog, falls bereits Fragen beantwortet wurden
-            showDialogue(leaveQuizHTML());
+            showDialogue(leaveQuizHTML(quizIndex));
         } else { // sonst ohne Dialog neues Quiz starten
             startQuiz(quizIndex);
         }
