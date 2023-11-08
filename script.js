@@ -42,12 +42,10 @@ function startQuiz(quizIndex) {
 }
 
 function navSelectQuiz(quizIndex) {
-    if (!disabledNav) {
-        if (currentQuestion > 0) { // Bestätigung per Dialog, falls bereits Fragen beantwortet wurden
-            showDialogue(leaveQuizHTML(quizIndex));
-        } else { // sonst ohne Dialog neues Quiz starten
-            startQuiz(quizIndex);
-        }
+    if (currentQuestion > 0) { // Bestätigung per Dialog, falls bereits Fragen beantwortet wurden
+        showDialogue(leaveQuizHTML(quizIndex));
+    } else { // sonst ohne Dialog neues Quiz starten
+        startQuiz(quizIndex);
     }
 }
 
