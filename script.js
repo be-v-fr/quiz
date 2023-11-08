@@ -28,7 +28,6 @@ function reset() {
     currentQuestion = 0;
     correctAnswers = 0;
     disabledAnswers = false;
-    activateNav(false);
     positionSelectedQuizLine(0); // Entfernung der Nav-Markierungen
     renderProgressBar();
 }
@@ -40,18 +39,6 @@ function startQuiz(quizIndex) {
     setQuestionsArray(quizIndex);
     renderNumberOfQuestions();
     renderQuestion();
-    activateNav(true);
-}
-
-function activateNav(activated) {
-    const nav = document.getElementById('nav');
-    if(activated) {
-        disabledNav = false;
-        nav.classList.remove('navInactive');
-    } else {
-        disabledNav = true;
-        nav.classList.add('navInactive');
-    }
 }
 
 function navSelectQuiz(quizIndex) {
@@ -68,6 +55,7 @@ function showDialogue(message) {
     document.getElementById('dialogueWrapper').classList.remove('dNone');
     document.getElementById('dialogueMessage').innerHTML = `${message}`;
 }
+
 function hideDialogue() {
     document.getElementById('dialogueWrapper').classList.add('dNone');
 }
