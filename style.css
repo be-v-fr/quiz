@@ -8,20 +8,17 @@
 
 .main {
     font-family: 'Rubik';
-    min-height: calc(100vh - var(--footerHeight));
+    height: calc(100vh - var(--footerHeight));
     background: var(--mainBg) !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 4px;
 }
 
 .dNone {
     display: none !important;
-}
-
-.shadow {
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
 }
 
 .progress {
@@ -39,7 +36,7 @@
 
 .contentCard {
     width: var(--contentWidth);
-    height: 26rem !important;
+    height: 31rem !important;
     flex-direction: row !important;
 }
 
@@ -234,6 +231,7 @@ footer {
     gap: 4px;
     padding: 4px;
     background: var(--mainBg);
+    font-weight: 500;
 }
 
 footer>a {
@@ -252,7 +250,6 @@ footer>a:hover {
     }
 
     .contentCard {
-        /* height: 26rem !important; */
         flex-direction: column !important;
     }
 
