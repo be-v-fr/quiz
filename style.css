@@ -77,6 +77,15 @@ nav>a:hover {
     color: #F4F4F4;
 }
 
+.navInactive>a {
+    cursor: default;
+    color: lightgray;
+}
+
+.navInactive>a:hover {
+    color: lightgray;
+}
+
 .dialogueBg {
     background-color: rgba(0,0,0,0.2);
     z-index: 999;
@@ -124,7 +133,7 @@ nav>a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 #screen2>button {

@@ -2,6 +2,7 @@ let questions = [];
 let currentQuestion = 0;
 let correctAnswers = 0;
 let disabledAnswers = false; // dient zur Kontrolle, ob Frage bereits beantwortet wurde
+let disabledNav = true;
 
 function init() {
     renderProgressBar();
@@ -10,9 +11,9 @@ function init() {
 function showScreen(idNumber) {
     for (i = 1; i < 5; i++) {
         const screen = document.getElementById(`screen${i}`);
-        if (i == idNumber) { // anzeigen
+        if (i == idNumber) { // Screen #'idNumber' anzeigen
             screen.classList.remove('dNone');
-        } else { // verbergen
+        } else { // Screen verbergen
             screen.classList.add('dNone');
         }
     }
@@ -27,6 +28,7 @@ function reset() {
     currentQuestion = 0;
     correctAnswers = 0;
     disabledAnswers = false;
+    activateNav(false);
     positionSelectedQuizLine(0); // Entfernung der Nav-Markierungen
     renderProgressBar();
 }
@@ -38,13 +40,27 @@ function startQuiz(quizIndex) {
     setQuestionsArray(quizIndex);
     renderNumberOfQuestions();
     renderQuestion();
+    activateNav(true);
 }
 
-function navSelectQuiz(quizIndex) { // Bedingung für Aktivität hinzufügen
-    if (currentQuestion > 0) {
-        showDialogue(leaveQuizHTML());
+function activateNav(activated) {
+    const nav = document.getElementById('nav');
+    if(activated) {
+        disabledNav = false;
+        nav.classList.remove('navInactive');
     } else {
-        startQuiz(quizIndex);
+        disabledNav = true;
+        nav.classList.add('navInactive');
+    }
+}
+
+function navSelectQuiz(quizIndex) {
+    if (!disabledNav) {
+        if (currentQuestion > 0) { // Bestätigung per Dialog, falls bereits Fragen beantwortet wurden
+            showDialogue(leaveQuizHTML());
+        } else { // sonst ohne Dialog neues Quiz starten
+            startQuiz(quizIndex);
+        }
     }
 }
 
