@@ -37,86 +37,89 @@
         Browser unterstützt ein Audio-Element nicht.
     </audio>
 
-    <div class="progress" role="progressbar" style="height: var(--progressBarHeight)">
-        <div id="progressBar" class="progress-bar" style="width: 0%"></div>
-    </div>
+
 
     <div class="main">
-        <div class="card contentCard shadow">
-            <nav id="nav" class="card-header shadow navInactive">
-                <a href="#" onclick="navSelectQuiz(1)">HTML</a>
-                <a href="#" onclick="navSelectQuiz(2)">CSS</a>
-                <a href="#" onclick="navSelectQuiz(3)">JS</a>
-            </nav>
+        <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25">
+            <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+        </div>
+        <div class="classContentWrapper">
+            <div class="card contentCard shadow">
+                <nav id="nav" class="card-header shadow navInactive">
+                    <a href="#" onclick="navSelectQuiz(1)">HTML</a>
+                    <a href="#" onclick="navSelectQuiz(2)">CSS</a>
+                    <a href="#" onclick="navSelectQuiz(3)">JS</a>
+                </nav>
 
-            <div id="dialogueWrapper" class="dialogueBg dNone" onclick="hideDialogue()">
-                <div class="dialogue">
-                    <p id="dialogueMessage"></p>
-                </div>
-            </div>
-
-            <div class="card-body" id="screen1">
-                <h2>Willkommen zum WebDev-Quiz!</h2>
-                <p class="cardBodyText">
-                    Bist du bereit?
-                </p>
-                <button onclick="showSelectQuizMenu()" class="btn btn-primary">Thema wählen</button>
-            </div>
-
-            <div class="card-body dNone" id="screen2">
-                <h2>Wähle dein Lieblingsthema!</h2>
-                <button onclick="startQuiz(1)" class="btn btn-primary">HTML</button>
-                <button onclick="startQuiz(2)" class="btn btn-primary">CSS</button>
-                <button onclick="startQuiz(3)" class="btn btn-primary">Javascript</button>
-            </div>
-
-            <div class="card-body dNone" id="screen3">
-                <h5 class="card-title" id="question"></h5>
-                <div class="card quizAnswerCard mb-2" onclick="checkAnswer(1)">
-                    <div class="card-body" id="answer1">
-                        <div class="answerLetter">A</div>
-                        <span id="answer1Content"></span>
-                    </div>
-                </div>
-                <div class="card quizAnswerCard mb-2" onclick="checkAnswer(2)">
-                    <div class="card-body" id="answer2">
-                        <div class="answerLetter">B</div>
-                        <span id="answer2Content"></span>
-                    </div>
-                </div>
-                <div class="card quizAnswerCard mb-2" onclick="checkAnswer(3)">
-                    <div class="card-body" id="answer3">
-                        <div class="answerLetter">C</div>
-                        <span id="answer3Content"></span>
-                    </div>
-                </div>
-                <div class="card quizAnswerCard mb-2" onclick="checkAnswer(4)">
-                    <div class="card-body" id="answer4">
-                        <div class="answerLetter">D</div>
-                        <span id="answer4Content"></span>
+                <div id="dialogueWrapper" class="dialogueBg dNone" onclick="hideDialogue()">
+                    <div class="dialogue">
+                        <p id="dialogueMessage"></p>
                     </div>
                 </div>
 
-                <div class="quizCardFooter">
-                    <p class="counter">Frage <b id="currentQuestion"></b> von <b id="numberOfQuestions"></b></p>
-                    <button onclick="nextQuestion()" id="nextQuestionBtn" class="btn btn-primary" disabled>Nächste
-                        Frage</button>
-                </div>
-            </div>
-
-            <div class="card-body dNone" id="screen4">
-                <img src="./img/brain result.png" alt="Ergebnis" class="resultBrain">
-                HTML-Quiz beendet!
-                <div class="resultLine">
-                    <p class="yourScore">Deine Punktzahl</p>
-                    <p id="result"></p>
+                <div class="card-body" id="screen1">
+                    <h2>Willkommen zum WebDev-Quiz!</h2>
+                    <p class="cardBodyText">
+                        Bist du bereit?
+                    </p>
+                    <button onclick="showSelectQuizMenu()" class="btn btn-primary">Thema wählen</button>
                 </div>
 
-                <div class="quizCardFooter">
-                    <button onclick="showSelectQuizMenu()" class="btn btn-primary">Neues Spiel</button>
+                <div class="card-body dNone" id="screen2">
+                    <h2>Wähle dein Lieblingsthema!</h2>
+                    <button onclick="startQuiz(1)" class="btn btn-primary">HTML</button>
+                    <button onclick="startQuiz(2)" class="btn btn-primary">CSS</button>
+                    <button onclick="startQuiz(3)" class="btn btn-primary">Javascript</button>
                 </div>
 
-                <img id="trophy" src="./img/trophy.png" alt="Pokal">
+                <div class="card-body dNone" id="screen3">
+                    <h5 class="card-title" id="question"></h5>
+                    <div class="card quizAnswerCard mb-2" onclick="checkAnswer(1)">
+                        <div class="card-body" id="answer1">
+                            <div class="answerLetter">A</div>
+                            <span id="answer1Content"></span>
+                        </div>
+                    </div>
+                    <div class="card quizAnswerCard mb-2" onclick="checkAnswer(2)">
+                        <div class="card-body" id="answer2">
+                            <div class="answerLetter">B</div>
+                            <span id="answer2Content"></span>
+                        </div>
+                    </div>
+                    <div class="card quizAnswerCard mb-2" onclick="checkAnswer(3)">
+                        <div class="card-body" id="answer3">
+                            <div class="answerLetter">C</div>
+                            <span id="answer3Content"></span>
+                        </div>
+                    </div>
+                    <div class="card quizAnswerCard mb-2" onclick="checkAnswer(4)">
+                        <div class="card-body" id="answer4">
+                            <div class="answerLetter">D</div>
+                            <span id="answer4Content"></span>
+                        </div>
+                    </div>
+
+                    <div class="quizCardFooter">
+                        <p class="counter">Frage <b id="currentQuestion"></b> von <b id="numberOfQuestions"></b></p>
+                        <button onclick="nextQuestion()" id="nextQuestionBtn" class="btn btn-primary" disabled>Nächste
+                            Frage</button>
+                    </div>
+                </div>
+
+                <div class="card-body dNone" id="screen4">
+                    <img src="./img/brain result.png" alt="Ergebnis" class="resultBrain">
+                    HTML-Quiz beendet!
+                    <div class="resultLine">
+                        <p class="yourScore">Deine Punktzahl</p>
+                        <p id="result"></p>
+                    </div>
+
+                    <div class="quizCardFooter">
+                        <button onclick="showSelectQuizMenu()" class="btn btn-primary">Neues Spiel</button>
+                    </div>
+
+                    <img id="trophy" src="./img/trophy.png" alt="Pokal">
+                </div>
             </div>
         </div>
     </div>

@@ -81,6 +81,7 @@ function renderProgressBar() {
     const progressBar = document.getElementById('progressBar');
     const widthPercent = currentQuestion / questions.length * 100;
     progressBar.style.width = `${widthPercent}%`;
+    progressBar.innerHTML = `${widthPercent}%`;
 }
 
 function renderAnswers() {

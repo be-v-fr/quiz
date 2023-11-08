@@ -2,13 +2,13 @@
     --mainBg: #FEFAEF;
     --anthraciteBlue: #27355C;
     --navPadding: 32px;
-    --progressBarHeight: 10px;
     --footerHeight: 2em;
+    --contentWidth: 50rem;
 }
 
 .main {
     font-family: 'Rubik';
-    min-height: calc(100vh - var(--progressBarHeight) - var(--footerHeight));
+    min-height: calc(100vh - var(--footerHeight));
     background: var(--mainBg) !important;
     display: flex;
     flex-direction: column;
@@ -25,12 +25,12 @@
 }
 
 .progress {
-    border-radius: 0 !important;
+    width: var(--contentWidth);
 }
 
 .progress-bar {
     border-radius: 0 5px 5px 0;
-    background-color: var(--anthraciteBlue) !important;
+    background-color: #1F485E !important;
 }
 
 .card {
@@ -38,7 +38,7 @@
 }
 
 .contentCard {
-    width: 50rem;
+    width: var(--contentWidth);
     height: 26rem !important;
     flex-direction: row !important;
 }
@@ -247,8 +247,11 @@ footer>a:hover {
 }
 
 @media(max-width: 832px) {
+    :root {
+        --contentWidth: calc(100vw - 8px);
+    }
+
     .contentCard {
-        width: calc(100vw - 8px);
         /* height: 26rem !important; */
         flex-direction: column !important;
     }
