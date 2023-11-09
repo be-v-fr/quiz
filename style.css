@@ -54,7 +54,7 @@ body {
 .card-header {
     border-style: none !important;
     background: var(--anthraciteBlue) !important;
-    background-image: url(./img/logo.png) !important;
+    background-image: url(../quiz/img/logo.png) !important;
     background-repeat: no-repeat !important;
     background-size: 60px !important;
     background-position: var(--navPadding) calc(var(--navPadding)/2) !important;
