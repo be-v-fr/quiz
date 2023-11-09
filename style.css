@@ -6,9 +6,13 @@
     --contentWidth: 50rem;
 }
 
+body {
+    overflow: hidden;
+}
+
 .main {
     font-family: 'Rubik';
-    height: calc(100vh - var(--footerHeight));
+    min-height: calc(100vh - var(--footerHeight));
     background: var(--mainBg) !important;
     display: flex;
     flex-direction: column;
@@ -136,7 +140,11 @@ nav>a:hover {
 
 h2 {
     font-family: 'PT Sans';
-    font-weight: bold;
+    font-weight: 600 !important;
+}
+
+.show480 {
+    display: none;
 }
 
 .cardBodyText {
@@ -270,5 +278,50 @@ footer>a:hover {
         border-color: rgba(0,0,0,0);
         display: flex;
         justify-content: center;
+    }
+}
+
+@media(max-width: 480px) {
+    :root {
+        --bs-body-font-size: 0.9rem !important;
+    }
+
+    .card-header {
+        justify-content: flex-end;
+    }
+
+    .card-body {
+        padding: calc(var(--bs-card-spacer-y)/1.4) calc(var(--bs-card-spacer-x)/1.8) !important;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    #nav {
+        padding-right: var(--navPadding) !important;
+    }
+
+    nav>a {
+        width: 36px;
+    }
+
+    .show480 {
+        display: initial;
+    }
+
+    .btn {
+        font-size: var(--bs-body-font-size) !important;
+    }
+
+    .dialogue {
+        width: calc(350px - 6px);
+        padding-top: 12px;
+        height: 112px;
+    }
+
+    #trophy {
+        width: 72px;
+        top: calc(50vh - 72px);
     }
 }
