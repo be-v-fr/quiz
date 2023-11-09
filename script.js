@@ -93,8 +93,11 @@ function renderAnswers() {
 function renderAnswer(answerIndex) {
     const answer = document.getElementById(`answer${answerIndex}`);
     const answerContent = document.getElementById(`answer${answerIndex}Content`);
-    answer.classList.remove('bg-success');
-    answer.classList.remove('bg-danger');
+    // Farben zurücksetzen:
+    answer.firstElementChild.classList.remove('bg-success');
+    answer.firstElementChild.classList.remove('bg-danger');
+    answer.classList.remove('bg-success-subtle');
+    answer.classList.remove('bg-danger-subtle');
     answerContent.innerHTML = `${questions[currentQuestion][`answer${answerIndex}`]}`;
 }
 
@@ -103,7 +106,7 @@ function positionSelectedQuizLine(navIndex) {
         document.querySelector(`#nav :nth-child(${i})`).style = 'border-color: rgba(0,0,0,0)';
     }
     if (navIndex != 0) { // für den Wert 0 werden die Markierungen nur entfernt
-        document.querySelector(`#nav :nth-child(${navIndex})`).style = 'border-color: white';
+        document.querySelector(`#nav :nth-child(${navIndex})`).style = 'color: white; border-color: white';
     }
 }
 
@@ -120,28 +123,31 @@ function setQuestionsArray(quizIndex) {
 }
 
 function checkAnswer(selectedAnswerIndex) {
-    const selectedAnswer = document.getElementById(`answer${selectedAnswerIndex}`);
     const correctAnswerIndex = questions[currentQuestion]['correctAnswer'];
-    const correctAnswer = document.getElementById(`answer${correctAnswerIndex}`);
 
     if (!disabledAnswers) {
         if (!wrongAnswer(selectedAnswerIndex, correctAnswerIndex)) {
             correctAnswers++;
         }
-        answerColorAndSound(selectedAnswerIndex, selectedAnswer, correctAnswerIndex, correctAnswer);
+        answerColorAndSound(selectedAnswerIndex, correctAnswerIndex);
         disableNextQuestionBtn(false);
         disableAnswers(true);
     }
 }
 
-function answerColorAndSound(selectedIndex, selected, correctIndex, correct) {
+function answerColorAndSound(selectedIndex, correctIndex) {
+    const correct = document.getElementById(`answer${correctIndex}`);
+    const selected = document.getElementById(`answer${selectedIndex}`);
+
     if (wrongAnswer(selectedIndex, correctIndex)) {
-        selected.classList.add('bg-danger');
+        selected.classList.add('bg-danger-subtle');
+        selected.firstElementChild.classList.add('bg-danger');
         playAudio('wrongAnswerAudio');
     } else {
         playAudio('correctAnswerAudio');
     }
-    correct.classList.add('bg-success');
+    correct.classList.add('bg-success-subtle');
+    correct.firstElementChild.classList.add('bg-success');
 }
 
 function wrongAnswer(selected, correct) {

@@ -72,7 +72,7 @@ body {
 
 nav>a {
     text-decoration: none;
-    color: white;
+    color: #AEB9D5;
     cursor: pointer;
     padding-left: calc(var(--navPadding) - 4px);
     padding-right: calc(var(--navPadding)*3/2);

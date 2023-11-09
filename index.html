@@ -5,13 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuizApp</title>
-
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./PtSans.css">
-    <link rel="stylesheet" href="./rubik.css">
-    <script src="./quizData.js"></script>
-    <script src="./script.js"></script>
-
+    
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -19,6 +13,11 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./PtSans.css">
+    <link rel="stylesheet" href="./rubik.css">
+    <script src="./quizData.js"></script>
+    <script src="./script.js"></script>
 </head>
 
 <body onload="init()">
@@ -76,25 +75,25 @@
                     <h5 class="card-title" id="question"></h5>
                     <div class="card quizAnswerCard mb-2" onclick="checkAnswer(1)">
                         <div class="card-body" id="answer1">
-                            <div class="answerLetter">A</div>
+                            <div class="answerLetter" id="answer1Letter">A</div>
                             <span id="answer1Content"></span>
                         </div>
                     </div>
                     <div class="card quizAnswerCard mb-2" onclick="checkAnswer(2)">
                         <div class="card-body" id="answer2">
-                            <div class="answerLetter">B</div>
+                            <div class="answerLetter" id="answer2Letter">B</div>
                             <span id="answer2Content"></span>
                         </div>
                     </div>
                     <div class="card quizAnswerCard mb-2" onclick="checkAnswer(3)">
                         <div class="card-body" id="answer3">
-                            <div class="answerLetter">C</div>
+                            <div class="answerLetter" id="answer3Letter">C</div>
                             <span id="answer3Content"></span>
                         </div>
                     </div>
                     <div class="card quizAnswerCard mb-2" onclick="checkAnswer(4)">
                         <div class="card-body" id="answer4">
-                            <div class="answerLetter">D</div>
+                            <div class="answerLetter" id="answer4Letter">D</div>
                             <span id="answer4Content"></span>
                         </div>
                     </div>
